@@ -16,11 +16,6 @@ function Form({ form, infoMessage, inputChange, postQuiz, setMessage, resetForm 
     setLocalForm(form);
   }, [form]);
 
-  const canSubmit =
-  localForm.newQuestion.length > 1 &&
-  localForm.newTrueAnswer.length > 1 &&
-  localForm.newFalseAnswer.length > 1;
-
   const onChange = (evt) => {
     const { id, value } = evt.target;
     setLocalForm({
@@ -30,7 +25,10 @@ function Form({ form, infoMessage, inputChange, postQuiz, setMessage, resetForm 
     inputChange(id, value.trim());
   };
 
- 
+  const canSubmit =
+    localForm.newQuestion.length > 1 &&
+    localForm.newTrueAnswer.length > 1 &&
+    localForm.newFalseAnswer.length > 1;
 
   const onSubmit = (evt) => {
     evt.preventDefault();

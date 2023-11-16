@@ -26,7 +26,11 @@ const initialQuizState = null;
 function quizReducer(state = initialQuizState, action) {
   switch (action.type) {
     case SET_QUIZ_INTO_STATE:
-      return action.payload;
+      
+      return Array.isArray(action.payload)
+        ? state.concat(action.payload)
+        : action.payload;
+  
     default:
       return state;
   }
